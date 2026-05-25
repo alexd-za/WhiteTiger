@@ -11,21 +11,29 @@
     "react-dom": "19.2.3",
     "remotion": "4.0.466",
     "@remotion/tailwind-v4": "4.0.466",
-    "tailwindcss": "4.0.0"
+    "tailwindcss": "4.0.0",
+    "@elevenlabs/elevenlabs-js": "^2.3.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "ffmpeg-static": "^5.2.0",
+    "@ffprobe-installer/ffprobe": "^1.4.1",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.466",
     "@types/react": "19.2.7",
     "@types/web": "0.0.166",
+    "@types/fluent-ffmpeg": "^2.1.27",
     "eslint": "9.19.0",
     "prettier": "3.8.1",
+    "tsx": "^4.19.4",
     "typescript": "5.9.3"
   },
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "generate-audio": "tsx generate-audio.ts"
   },
   "sideEffects": [
     "*.css"
