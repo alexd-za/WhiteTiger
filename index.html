@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The White Tiger — 30-Minute Book Summary Video</title>
+  <meta name="description" content="A cinematic 30-minute animated book summary of The White Tiger by Aravind Adiga. Built with Remotion, TypeScript, and TailwindCSS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber: #f59e0b;
+      --amber-dim: #92400e;
+      --slate-950: #020617;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--slate-950);
+      color: var(--slate-300);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Hero ────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.07) 0%, transparent 60%),
+                  linear-gradient(to bottom, #020617, #0a0f1e);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(245,158,11,0.025) 0px, transparent 1px, transparent 79px, rgba(245,158,11,0.025) 80px),
+        repeating-linear-gradient(90deg, rgba(245,158,11,0.025) 0px, transparent 1px, transparent 79px, rgba(245,158,11,0.025) 80px);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s ease-out forwards;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 900;
+      line-height: 0.9;
+      color: #fff;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s ease-out forwards;
+    }
+
+    .hero-title em {
+      display: block;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      margin-top: 2rem;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--slate-400);
+      max-width: 42rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s ease-out forwards;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.75s ease-out forwards;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .meta-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .meta-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slate-400);
+    }
+
+    .meta-divider {
+      width: 1px;
+      height: 3rem;
+      background: var(--slate-700);
+      align-self: center;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s ease-out forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--amber);
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(245,158,11,0.4);
+    }
+
+    .btn-primary .arrow {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-primary:hover .arrow { transform: translateX(4px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--slate-400);
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: 1px solid var(--slate-700);
+      padding: 0.9rem 2rem;
+      transition: color 0.2s, border-color 0.2s;
+      margin-left: 1rem;
+    }
+
+    .btn-secondary:hover { color: #fff; border-color: var(--slate-500); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.5s ease-out forwards;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 3rem;
+      background: linear-gradient(to bottom, var(--amber), transparent);
+      animation: scrollPulse 2s 1.5s ease-in-out infinite;
+    }
+
+    .scroll-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slate-400);
+    }
+
+    /* ── Quote Strip ─────────────────────────────────────────────── */
+    .quote-strip {
+      background: linear-gradient(to right, transparent, var(--slate-900), transparent);
+      border-top: 1px solid var(--slate-800);
+      border-bottom: 1px solid var(--slate-800);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .quote-strip blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-style: italic;
+      color: var(--amber);
+      max-width: 56rem;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .quote-strip cite {
+      display: block;
+      margin-top: 1rem;
+      font-style: normal;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slate-400);
+    }
+
+    /* ── Section ─────────────────────────────────────────────────── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-body {
+      color: var(--slate-400);
+      font-size: 1.05rem;
+      max-width: 42rem;
+      line-height: 1.8;
+    }
+
+    /* ── Themes ──────────────────────────────────────────────────── */
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .theme-card {
+      border: 1px solid var(--slate-800);
+      background: linear-gradient(135deg, var(--slate-900), var(--slate-950));
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .theme-card:hover {
+      border-color: var(--amber-dim);
+      transform: translateY(-3px);
+    }
+
+    .theme-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(245,158,11,0.12);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .theme-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .theme-desc {
+      font-size: 0.9rem;
+      color: var(--slate-400);
+      line-height: 1.6;
+    }
+
+    /* ── Scenes ──────────────────────────────────────────────────── */
+    .scenes-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(to bottom, transparent, var(--slate-900), transparent);
+    }
+
+    .scenes-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+      gap: 1px;
+      border: 1px solid var(--slate-800);
+      margin-top: 3rem;
+      overflow: hidden;
+    }
+
+    .scene-card {
+      background: var(--slate-950);
+      padding: 1.5rem;
+      border-right: 1px solid var(--slate-800);
+      border-bottom: 1px solid var(--slate-800);
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scene-card:hover { background: var(--slate-900); }
+
+    .scene-card::before {
+      content: attr(data-num);
+      position: absolute;
+      right: 1rem;
+      top: 0.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .scene-duration {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slate-400);
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .scene-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--amber);
+      line-height: 1.5;
+      border-left: 2px solid var(--amber-dim);
+      padding-left: 0.75rem;
+    }
+
+    /* ── Tech Stack ──────────────────────────────────────────────── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: 1px;
+      border: 1px solid var(--slate-800);
+      margin-top: 3rem;
+      overflow: hidden;
+    }
+
+    .tech-item {
+      padding: 2rem 1.5rem;
+      background: var(--slate-950);
+      border-right: 1px solid var(--slate-800);
+      border-bottom: 1px solid var(--slate-800);
+    }
+
+    .tech-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .tech-desc {
+      font-size: 0.82rem;
+      color: var(--slate-400);
+      line-height: 1.5;
+    }
+
+    /* ── CTA Banner ──────────────────────────────────────────────── */
+    .cta-banner {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(245,158,11,0.06) 0%, transparent 70%);
+      border-top: 1px solid var(--slate-800);
+    }
+
+    .cta-banner .section-title { margin-bottom: 1rem; }
+
+    .cta-note {
+      font-size: 0.8rem;
+      color: var(--slate-400);
+      margin-top: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--slate-800);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--slate-400);
+    }
+
+    footer a { color: var(--amber); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Animations ──────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+      50%      { opacity: 1;   transform: scaleY(1); }
+    }
+
+    /* ── Reveal on scroll ────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ──────────────────────────────────────────────────── -->
+  <div class="hero">
+    <p class="hero-eyebrow">Book Summary Video · Aravind Adiga · 2008 Booker Prize</p>
+
+    <h1 class="hero-title">
+      The<br>
+      <em>White Tiger</em>
+    </h1>
+
+    <p class="hero-subtitle">
+      A cinematic 30-minute animated book summary — 18 scenes, 54,000 frames,
+      kinetic typography, and a full narration pipeline built with Remotion.
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-value">30</span>
+        <span class="meta-label">Minutes</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-value">18</span>
+        <span class="meta-label">Scenes</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-value">54K</span>
+        <span class="meta-label">Frames</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-value">4,597</span>
+        <span class="meta-label">Script Words</span>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="player.html" class="btn-primary">
+        Launch Interactive Player
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a href="https://github.com/alexd-za/WhiteTiger" class="btn-secondary" target="_blank" rel="noopener">
+        GitHub
+      </a>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span class="scroll-label">Scroll</span>
+    </div>
+  </div>
+
+  <!-- ── PULL QUOTE ────────────────────────────────────────────── -->
+  <div class="quote-strip">
+    <blockquote>
+      &ldquo;The Rooster Coop will not break itself. Only a White Tiger &mdash; born once in a generation &mdash; can tear through the wire.&rdquo;
+    </blockquote>
+    <cite>&mdash; Balram Halwai, The White Tiger</cite>
+  </div>
+
+  <!-- ── ABOUT ─────────────────────────────────────────────────── -->
+  <section>
+    <p class="section-eyebrow reveal">About the Project</p>
+    <h2 class="section-title reveal">India's Story, Told in Frames</h2>
+    <p class="section-body reveal">
+      Aravind Adiga's <em>The White Tiger</em> &mdash; winner of the 2008 Booker Prize &mdash; follows
+      Balram Halwai from the dusty poverty of rural Bihar to a Bangalore office under a
+      chandelier of his own. This project turns that journey into a fully animated
+      30-minute video summary: every scene has kinetic typography, spring-physics animations,
+      scene-specific cinematic colour palettes, and a narration script timed to the
+      exact frame.
+    </p>
+  </section>
+
+  <!-- ── THEMES ────────────────────────────────────────────────── -->
+  <section>
+    <p class="section-eyebrow reveal">Core Themes</p>
+    <h2 class="section-title reveal">Five Ideas That Run the Book</h2>
+    <div class="themes-grid">
+      <div class="theme-card reveal">
+        <div class="theme-number">01</div>
+        <div class="theme-name">The Rooster Coop</div>
+        <div class="theme-desc">Servants maintain their own captivity out of love for their families. Only a man willing to let his family be destroyed can break free.</div>
+      </div>
+      <div class="theme-card reveal">
+        <div class="theme-number">02</div>
+        <div class="theme-name">Light vs. Darkness</div>
+        <div class="theme-desc">India is two nations &mdash; the coastal tech cities of Light and the feudal Gangetic plain of Darkness. They coexist without seeing each other.</div>
+      </div>
+      <div class="theme-card reveal">
+        <div class="theme-number">03</div>
+        <div class="theme-name">Master-Servant Dynamic</div>
+        <div class="theme-desc">&ldquo;Do we loathe our masters behind a facade of love, or love them behind a facade of loathing?&rdquo; Balram lives inside this question for years.</div>
+      </div>
+      <div class="theme-card reveal">
+        <div class="theme-number">04</div>
+        <div class="theme-name">Democratic Illusion</div>
+        <div class="theme-desc">Elections are theater. The Great Socialist takes the largest bribes. Real power belongs to the landlords and the red bag.</div>
+      </div>
+      <div class="theme-card reveal">
+        <div class="theme-number">05</div>
+        <div class="theme-name">Entrepreneurship as Freedom</div>
+        <div class="theme-desc">White Tiger Drivers. Built on stolen money, corrupt licenses, and the dead master's name. Freedom that costs everything &mdash; and is worth it.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SCENES ────────────────────────────────────────────────── -->
+  <div class="scenes-section">
+    <div class="scenes-inner">
+      <p class="section-eyebrow reveal">Scene Breakdown</p>
+      <h2 class="section-title reveal">18 Acts, 30 Minutes</h2>
+      <div class="scenes-grid" id="scenes-grid">
+        <!-- Populated by JS below -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TECH STACK ────────────────────────────────────────────── -->
+  <section>
+    <p class="section-eyebrow reveal">How It's Built</p>
+    <h2 class="section-title reveal">The Technical Stack</h2>
+    <div class="tech-grid">
+      <div class="tech-item reveal">
+        <div class="tech-name">Remotion 4</div>
+        <div class="tech-desc">React-based video framework. 54,000 frames at 30fps. Every animation is a function of the current frame number.</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-name">TypeScript</div>
+        <div class="tech-desc">Strict mode throughout. Scene components, hooks, and the audio pipeline are all fully typed.</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-name">TailwindCSS v4</div>
+        <div class="tech-desc">Utility-first CSS for all scene layouts. Dark cinematic palettes: slate-950, amber-400, violet-950.</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-name">ElevenLabs TTS</div>
+        <div class="tech-desc">Voice: George (JBFqnCBsd6RMkjVDRZzb). Model: eleven_multilingual_v2. Request stitching for seamless scene boundaries.</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-name">fluent-ffmpeg</div>
+        <div class="tech-desc">Merges 18 individual TTS segments into voiceover.mp3. Also layers ambient SFX at &minus;15dB for cinematic depth.</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-name">useSyncedTiming()</div>
+        <div class="tech-desc">Custom hook that locks visual animations to real ffprobe-measured audio durations. Zero drift between narration and visuals.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ────────────────────────────────────────────── -->
+  <div class="cta-banner">
+    <h2 class="section-title reveal">See It in Motion</h2>
+    <p class="section-body reveal" style="margin: 0 auto 2rem;">
+      Open the interactive Remotion player to scrub through all 18 scenes,
+      inspect the kinetic typography animations, and navigate the full 30-minute timeline.
+    </p>
+    <a href="player.html" class="btn-primary reveal">
+      Launch Interactive Player <span class="arrow">&rarr;</span>
+    </a>
+    <p class="cta-note reveal">Visual preview only &mdash; add your ElevenLabs narration locally with <code>npm run generate-audio</code></p>
+  </div>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer>
+    Built with <a href="https://remotion.dev" target="_blank" rel="noopener">Remotion</a> &middot;
+    Based on <em>The White Tiger</em> by Aravind Adiga (2008) &middot;
+    <a href="https://github.com/alexd-za/WhiteTiger" target="_blank" rel="noopener">Source on GitHub</a>
+  </footer>
+
+  <script>
+    const scenes = [
+      { id: "01", title: "Prologue: Letters from Bangalore", duration: "1:30", quote: "I was a servant once, you see." },
+      { id: "02", title: "The Two Indias: Light and Darkness", duration: "2:00", quote: "I am tomorrow." },
+      { id: "03", title: "Laxmangarh: The Village of Servants", duration: "1:40", quote: "The story of a poor man's life is written on his body, in a sharp pen." },
+      { id: "04", title: "The White Tiger: A Name and a Promise", duration: "1:20", quote: "The rarest of animals — once in a generation." },
+      { id: "05", title: "From Servitude to Strategy", duration: "1:30", quote: "A driver is always near the boss — always near the money." },
+      { id: "06", title: "Dhanbad: Driver Number One", duration: "1:40", quote: "I was looking for the key for years. But the door was always open." },
+      { id: "07", title: "The Compound: Intimacy and Distance", duration: "1:30", quote: "Do we loathe our masters behind a facade of love?" },
+      { id: "08", title: "Delhi: The Capital of Contrasts", duration: "1:50", quote: "Delhi is the belly of India. Everything gets eaten here." },
+      { id: "09", title: "Mr. Ashok and Pinky Madam", duration: "1:40", quote: "Never before have so few owed so much to so many." },
+      { id: "10", title: "The Rooster Coop: India's Great Trap", duration: "2:00", quote: "The Rooster Coop will not break itself." },
+      { id: "11", title: "The Hit and Run: The Trap Snaps Shut", duration: "1:50", quote: "What a fucking joke." },
+      { id: "12", title: "Confession and Abandonment", duration: "1:30", quote: "He was my master and I had signed his confession." },
+      { id: "13", title: "The Red Bag: Corruption in Plain Sight", duration: "1:40", quote: "Seven hundred thousand rupees. Nothing." },
+      { id: "14", title: "The Zoo: A White Tiger in Captivity", duration: "1:40", quote: "He was the only animal not looking at us." },
+      { id: "15", title: "The Night on the Road", duration: "1:30", quote: "I drowned him and I sang while I did it." },
+      { id: "16", title: "Flight: The Price of Freedom", duration: "1:20", quote: "Only a man prepared to see his family destroyed can break free." },
+      { id: "17", title: "White Tiger Drivers: The New Master", duration: "2:00", quote: "The Rooster Coop doesn't always hold." },
+      { id: "18", title: "The Chandelier: Freedom and Its Cost", duration: "1:50", quote: "I am tomorrow." },
+    ];
+
+    const grid = document.getElementById('scenes-grid');
+    scenes.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'scene-card reveal';
+      card.setAttribute('data-num', s.id);
+      card.innerHTML = `
+        <div class="scene-duration">Scene ${s.id} &middot; ${s.duration}</div>
+        <div class="scene-title">${s.title}</div>
+        <div class="scene-quote">&ldquo;${s.quote}&rdquo;</div>
+      `;
+      grid.appendChild(card);
+    });
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
