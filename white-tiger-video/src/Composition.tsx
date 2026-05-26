@@ -71,12 +71,8 @@ const SceneWrapper: React.FC<{ sceneId: string }> = ({ sceneId }) => {
 export const WhiteTigerSummary: React.FC = () => {
   return (
     <AbsoluteFill className="bg-black">
-      {/*
-        Full-length voiceover.
-        Replace public/voiceover.mp3 with real ElevenLabs narration by running:
-          npm run generate-audio
-      */}
-      <Audio src={staticFile("voiceover.mp3")} />
+      {/* Audio: enable locally with `npm run dev` after running `npm run generate-audio` */}
+      {false && <Audio src={staticFile("voiceover.mp3")} />}
 
       {script.map((scene) => (
         <SceneWrapper key={scene.id} sceneId={scene.id} />

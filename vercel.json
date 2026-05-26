@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd white-tiger-video && npm install --legacy-peer-deps && npm run build",
+  "buildCommand": "cd white-tiger-video && npm install --legacy-peer-deps && npm run build && node scripts/setup-pages.mjs",
   "outputDirectory": "white-tiger-video/build",
   "installCommand": "echo 'build handled in buildCommand'"
 }
