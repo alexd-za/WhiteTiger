@@ -33,7 +33,8 @@
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
-    "generate-audio": "tsx generate-audio.ts"
+    "generate-audio": "tsx generate-audio.ts",
+    "generate-audio-mock": "tsx generate-audio-mock.ts"
   },
   "sideEffects": [
     "*.css"
