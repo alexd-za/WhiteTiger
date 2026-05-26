@@ -1,8 +1,8 @@
 "use strict";
 (self["webpackChunkwhite_tiger_video"] = self["webpackChunkwhite_tiger_video"] || []).push([[997],{
 
-/***/ 997:
-(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ 997
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   z: () => (/* reexport module object */ _v4_classic_external_js__WEBPACK_IMPORTED_MODULE_0__)
